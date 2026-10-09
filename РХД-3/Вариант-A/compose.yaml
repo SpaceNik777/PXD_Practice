@@ -1,0 +1,26 @@
+# Имя compose-проекта: не пересекается со стендами РХД-1 ("a") и РХД-2 ("rhd2")
+# по контейнерам, томам и сетям.
+name: rhd3
+
+services:
+  postgres:
+    image: postgres:17.10-alpine
+    environment:
+      POSTGRES_DB: teamboard
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      # Порт 5432 на хосте занят посторонним контейнером, 55432 — стендом РХД-1,
+      # 55433 — стендом РХД-2, поэтому пробрасываем на 55434. Правая часть
+      # не меняется: внутри контейнера сервер слушает 5432.
+      - "55434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d teamboard"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

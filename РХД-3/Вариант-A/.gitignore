@@ -1,0 +1,9 @@
+# Данные и артефакты стендов
+pgdata/
+*.log
+run*.log
+
+# Go
+*.exe
+*.test
+*.out

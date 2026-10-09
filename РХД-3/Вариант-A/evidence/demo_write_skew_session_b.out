@@ -1,0 +1,13 @@
+BEGIN
+              set_config              
+--------------------------------------
+ 10000000-0000-0000-0000-000000000001
+(1 row)
+
+                  step                   | status 
+-----------------------------------------+--------
+ B: partner …0001 status before decision | open
+(1 row)
+
+UPDATE 1
+COMMIT

@@ -1,0 +1,18 @@
+BEGIN
+              set_config              
+--------------------------------------
+ 10000000-0000-0000-0000-000000000001
+(1 row)
+
+                  step                   | status 
+-----------------------------------------+--------
+ A: partner …0002 status before decision | open
+(1 row)
+
+ a_holds_window_for_b_read 
+---------------------------
+ 
+(1 row)
+
+UPDATE 1
+COMMIT
